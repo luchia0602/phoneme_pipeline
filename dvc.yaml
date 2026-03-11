@@ -1,0 +1,56 @@
+stages:
+  prepare_clean_manifest:
+    cmd: python src/create_manifest.py --raw_dir data/raw --out data/manifests/${prepare.lang}/clean.jsonl --lang ${prepare.lang}
+    deps:
+      - src/create_manifest.py
+      - data/raw/${prepare.lang}/wav
+    params:
+      - prepare.lang
+    outs:
+      - data/manifests/${prepare.lang}/clean.jsonl
+  add_noise:
+    foreach: ${noise.snrs}
+    do:
+      cmd: python src/add_noise.py --input data/manifests/${prepare.lang}/clean.jsonl --out_dir data/manifests/${prepare.lang}/noisy_${item} --snr ${item}
+      deps:
+        - src/add_noise.py
+        - data/manifests/${prepare.lang}/clean.jsonl
+      outs:
+        - data/manifests/${prepare.lang}/noisy_${item}/noisy_${item}db.jsonl
+  infer_clean:
+    cmd: python src/inference.py --input data/manifests/${prepare.lang}/clean.jsonl --out data/manifests/${prepare.lang}/clean_preds.jsonl
+    deps:
+      - src/inference.py
+      - data/manifests/${prepare.lang}/clean.jsonl
+    outs:
+      - data/manifests/${prepare.lang}/clean_preds.jsonl
+
+  infer_noisy:
+    foreach: ${noise.snrs}
+    do:
+      cmd: python src/inference.py --input data/manifests/${prepare.lang}/noisy_${item}/noisy_${item}db.jsonl --out data/manifests/${prepare.lang}/noisy_${item}/preds_${item}db.jsonl
+      deps:
+        - src/inference.py
+        - data/manifests/${prepare.lang}/noisy_${item}/noisy_${item}db.jsonl
+      outs:
+        - data/manifests/${prepare.lang}/noisy_${item}/preds_${item}db.jsonl
+
+  eval_clean:
+    cmd: python src/evaluate.py --input data/manifests/${prepare.lang}/clean_preds.jsonl --out data/metrics/${prepare.lang}/clean_metrics.json
+    deps:
+      - src/evaluate.py
+      - data/manifests/${prepare.lang}/clean_preds.jsonl
+    metrics:
+      - data/metrics/${prepare.lang}/clean_metrics.json:
+          cache: false
+
+  eval_noisy:
+    foreach: ${noise.snrs}
+    do:
+      cmd: python src/evaluate.py --input data/manifests/${prepare.lang}/noisy_${item}/preds_${item}db.jsonl --out data/metrics/${prepare.lang}/noisy_${item}_metrics.json
+      deps:
+        - src/evaluate.py
+        - data/manifests/${prepare.lang}/noisy_${item}/preds_${item}db.jsonl
+      metrics:
+        - data/metrics/${prepare.lang}/noisy_${item}_metrics.json:
+            cache: false

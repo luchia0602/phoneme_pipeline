@@ -2,12 +2,12 @@ schema: '2.0'
 stages:
   prepare_clean_manifest:
     cmd: python src/create_manifest.py --raw_dir data/raw --out 
-      data/manifests/en/clean.jsonl --lang en
+      data/manifests/fr/clean.jsonl --lang fr
     deps:
-    - path: data/raw/en/wav
+    - path: data/raw/fr/wav
       hash: md5
-      md5: b79256b178799e3ce7f8e1c25c6838b5.dir
-      size: 1288900
+      md5: 9b02dfeabfe3bdf5a4e27e36b3d305ff.dir
+      size: 2003208
       nfiles: 2
     - path: src/create_manifest.py
       hash: md5
@@ -15,179 +15,573 @@ stages:
       size: 2069
     params:
       params.yaml:
-        prepare.lang: en
+        prepare.lang: fr
     outs:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
   add_noise@20:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_20 --snr 20
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_20 --snr 20
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_20/noisy_20db.jsonl
+    - path: data/manifests/fr/noisy_20/noisy_20db.jsonl
       hash: md5
-      md5: 255549da2148c5e6e6ac82aec6c91eab
-      size: 4004
+      md5: 108144a7779f68a5f9ddd66422e7b2fa
+      size: 641
   add_noise@15:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_15 --snr 15
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_15 --snr 15
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_15/noisy_15db.jsonl
+    - path: data/manifests/fr/noisy_15/noisy_15db.jsonl
       hash: md5
-      md5: 71b1ac1aca3e42caf1292ab0cedcfa0d
-      size: 4004
+      md5: 2beb6b679d9685d03b66648e75270507
+      size: 641
   add_noise@10:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_10 --snr 10
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_10 --snr 10
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_10/noisy_10db.jsonl
+    - path: data/manifests/fr/noisy_10/noisy_10db.jsonl
       hash: md5
-      md5: 47af9d37cc80c1440d2cd0b82ae98aeb
-      size: 4004
+      md5: 43109f8dd50081e3fbd395b422f5be47
+      size: 641
   add_noise@5:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_5 --snr 5
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_5 --snr 5
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_5/noisy_5db.jsonl
+    - path: data/manifests/fr/noisy_5/noisy_5db.jsonl
       hash: md5
-      md5: 6fec5085fcc5b0cb6122b65251cc853a
-      size: 3998
+      md5: 1c17025ff112a4c5b35c8d7424172a08
+      size: 638
   add_noise@0:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_0 --snr 0
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_0 --snr 0
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_0/noisy_0db.jsonl
+    - path: data/manifests/fr/noisy_0/noisy_0db.jsonl
       hash: md5
-      md5: 7b360dd78f84335298667ce7b9c0e4d3
-      size: 3998
+      md5: 18054e6fe5ef824bdc129857b79d4af9
+      size: 638
   add_noise@-5:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_-5 --snr -5
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_-5 --snr -5
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_-5/noisy_-5db.jsonl
+    - path: data/manifests/fr/noisy_-5/noisy_-5db.jsonl
       hash: md5
-      md5: 51af0ce880ba72caaf067a531c7e1729
-      size: 4004
+      md5: 4373fb2235887ae57b75234e1ddfaaf5
+      size: 641
   add_noise@-10:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_-10 --snr -10
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_-10 --snr -10
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_-10/noisy_-10db.jsonl
+    - path: data/manifests/fr/noisy_-10/noisy_-10db.jsonl
       hash: md5
-      md5: 2ed5672f84a46992e3f1706c98eca1a5
-      size: 4010
+      md5: 5f1a5e1e214cda7eb3d1b894121c4d4f
+      size: 644
   add_noise@-15:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_-15 --snr -15
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_-15 --snr -15
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_-15/noisy_-15db.jsonl
+    - path: data/manifests/fr/noisy_-15/noisy_-15db.jsonl
       hash: md5
-      md5: e68ce910326373602cffb68732722a97
-      size: 4010
+      md5: e8a6339c949cb459dbb7631a054dda57
+      size: 644
   add_noise@-20:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_-20 --snr -20
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_-20 --snr -20
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_-20/noisy_-20db.jsonl
+    - path: data/manifests/fr/noisy_-20/noisy_-20db.jsonl
       hash: md5
-      md5: beec235b076e07a4a9a798acd2ec1bcd
-      size: 4010
+      md5: dea4022c3abc1a45a850d0b9855fa9a5
+      size: 644
   add_noise@-25:
-    cmd: python src/add_noise.py --input data/manifests/en/clean.jsonl --out_dir
-      data/manifests/en/noisy_-25 --snr -25
+    cmd: python src/add_noise.py --input data/manifests/fr/clean.jsonl --out_dir
+      data/manifests/fr/noisy_-25 --snr -25
     deps:
-    - path: data/manifests/en/clean.jsonl
+    - path: data/manifests/fr/clean.jsonl
       hash: md5
-      md5: ff9914e970374b1b60641c94d9f2a426
-      size: 3930
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
     - path: src/add_noise.py
       hash: md5
-      md5: 30009ac8bca4aaa6bff803b0b9291325
-      size: 2720
+      md5: aa34496a87c968e2285f3edfda1aff3e
+      size: 2707
     outs:
-    - path: data/manifests/en/noisy_-25/noisy_-25db.jsonl
+    - path: data/manifests/fr/noisy_-25/noisy_-25db.jsonl
       hash: md5
-      md5: 6e6daa1da9d2b607217b01a1b9e06cf8
-      size: 4010
+      md5: 1d9ccc3480b12f4e4a9d3bf729f347bf
+      size: 644
+  infer_clean:
+    cmd: python src/inference.py --input data/manifests/fr/clean.jsonl --out 
+      data/manifests/fr/clean_preds.jsonl
+    deps:
+    - path: data/manifests/fr/clean.jsonl
+      hash: md5
+      md5: e840a7835262fffdc6ae0b5a1c1231af
+      size: 604
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/clean_preds.jsonl
+      hash: md5
+      md5: 714dc10368a3f15843f88264b48e67d6
+      size: 907
+  infer_noisy@20:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_20/noisy_20db.jsonl --out 
+      data/manifests/fr/noisy_20/preds_20db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_20/noisy_20db.jsonl
+      hash: md5
+      md5: 108144a7779f68a5f9ddd66422e7b2fa
+      size: 641
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_20/preds_20db.jsonl
+      hash: md5
+      md5: ba31a395f926e119b4e2f334937b9b29
+      size: 947
+  infer_noisy@15:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_15/noisy_15db.jsonl --out 
+      data/manifests/fr/noisy_15/preds_15db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_15/noisy_15db.jsonl
+      hash: md5
+      md5: 2beb6b679d9685d03b66648e75270507
+      size: 641
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_15/preds_15db.jsonl
+      hash: md5
+      md5: 6fc0322cec0411248fe5abe8577d5bfe
+      size: 953
+  infer_noisy@10:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_10/noisy_10db.jsonl --out 
+      data/manifests/fr/noisy_10/preds_10db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_10/noisy_10db.jsonl
+      hash: md5
+      md5: 43109f8dd50081e3fbd395b422f5be47
+      size: 641
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_10/preds_10db.jsonl
+      hash: md5
+      md5: c359405771cd8236c99f9c5fff530980
+      size: 939
+  infer_noisy@5:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_5/noisy_5db.jsonl --out 
+      data/manifests/fr/noisy_5/preds_5db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_5/noisy_5db.jsonl
+      hash: md5
+      md5: 1c17025ff112a4c5b35c8d7424172a08
+      size: 638
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_5/preds_5db.jsonl
+      hash: md5
+      md5: 5c357d88c42c7dff1fa061bd420cae19
+      size: 889
+  infer_noisy@0:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_0/noisy_0db.jsonl --out 
+      data/manifests/fr/noisy_0/preds_0db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_0/noisy_0db.jsonl
+      hash: md5
+      md5: 18054e6fe5ef824bdc129857b79d4af9
+      size: 638
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_0/preds_0db.jsonl
+      hash: md5
+      md5: 936838934e07e39e0ca388077681dd8a
+      size: 904
+  infer_noisy@-5:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_-5/noisy_-5db.jsonl --out 
+      data/manifests/fr/noisy_-5/preds_-5db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_-5/noisy_-5db.jsonl
+      hash: md5
+      md5: 4373fb2235887ae57b75234e1ddfaaf5
+      size: 641
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_-5/preds_-5db.jsonl
+      hash: md5
+      md5: 85b503f53734ad03443f26d7f342c6f6
+      size: 829
+  infer_noisy@-10:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_-10/noisy_-10db.jsonl --out 
+      data/manifests/fr/noisy_-10/preds_-10db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_-10/noisy_-10db.jsonl
+      hash: md5
+      md5: 5f1a5e1e214cda7eb3d1b894121c4d4f
+      size: 644
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_-10/preds_-10db.jsonl
+      hash: md5
+      md5: dbc374bf8598f8c381b4249be0f6583b
+      size: 676
+  infer_noisy@-15:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_-15/noisy_-15db.jsonl --out 
+      data/manifests/fr/noisy_-15/preds_-15db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_-15/noisy_-15db.jsonl
+      hash: md5
+      md5: e8a6339c949cb459dbb7631a054dda57
+      size: 644
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_-15/preds_-15db.jsonl
+      hash: md5
+      md5: 5f9e3a37fa629a6c7ea00110a77c0d17
+      size: 661
+  infer_noisy@-20:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_-20/noisy_-20db.jsonl --out 
+      data/manifests/fr/noisy_-20/preds_-20db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_-20/noisy_-20db.jsonl
+      hash: md5
+      md5: dea4022c3abc1a45a850d0b9855fa9a5
+      size: 644
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_-20/preds_-20db.jsonl
+      hash: md5
+      md5: 0ccb137f54224607de1daac6f4d4cec9
+      size: 661
+  infer_noisy@-25:
+    cmd: python src/inference.py --input 
+      data/manifests/fr/noisy_-25/noisy_-25db.jsonl --out 
+      data/manifests/fr/noisy_-25/preds_-25db.jsonl
+    deps:
+    - path: data/manifests/fr/noisy_-25/noisy_-25db.jsonl
+      hash: md5
+      md5: 1d9ccc3480b12f4e4a9d3bf729f347bf
+      size: 644
+    - path: src/inference.py
+      hash: md5
+      md5: 3c71d5a685791c22f2a133b147a958c9
+      size: 2535
+    outs:
+    - path: data/manifests/fr/noisy_-25/preds_-25db.jsonl
+      hash: md5
+      md5: a4f3f516643023fe6eda31b27bfeae6b
+      size: 661
+  eval_clean:
+    cmd: python src/evaluate.py --input data/manifests/fr/clean_preds.jsonl 
+      --out data/metrics/fr/clean_metrics.json
+    deps:
+    - path: data/manifests/fr/clean_preds.jsonl
+      hash: md5
+      md5: 714dc10368a3f15843f88264b48e67d6
+      size: 907
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/clean_metrics.json
+      hash: md5
+      md5: 0761cea4b01a6417bfb92b070f0aabf0
+      size: 22
+  eval_noisy@20:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_20/preds_20db.jsonl --out 
+      data/metrics/fr/noisy_20_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_20/preds_20db.jsonl
+      hash: md5
+      md5: ba31a395f926e119b4e2f334937b9b29
+      size: 947
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_20_metrics.json
+      hash: md5
+      md5: 52b3bacad9e325108c228a5934944b9c
+      size: 35
+  eval_noisy@15:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_15/preds_15db.jsonl --out 
+      data/metrics/fr/noisy_15_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_15/preds_15db.jsonl
+      hash: md5
+      md5: 6fc0322cec0411248fe5abe8577d5bfe
+      size: 953
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_15_metrics.json
+      hash: md5
+      md5: b431cd7f41162fd2c1004395325d7b19
+      size: 35
+  eval_noisy@10:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_10/preds_10db.jsonl --out 
+      data/metrics/fr/noisy_10_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_10/preds_10db.jsonl
+      hash: md5
+      md5: c359405771cd8236c99f9c5fff530980
+      size: 939
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_10_metrics.json
+      hash: md5
+      md5: f4c884e6f76bee291d993fd37d761460
+      size: 35
+  eval_noisy@5:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_5/preds_5db.jsonl --out 
+      data/metrics/fr/noisy_5_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_5/preds_5db.jsonl
+      hash: md5
+      md5: 5c357d88c42c7dff1fa061bd420cae19
+      size: 889
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_5_metrics.json
+      hash: md5
+      md5: 90a587cfa8bf97fe26cc80ba96a66ad9
+      size: 24
+  eval_noisy@0:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_0/preds_0db.jsonl --out 
+      data/metrics/fr/noisy_0_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_0/preds_0db.jsonl
+      hash: md5
+      md5: 936838934e07e39e0ca388077681dd8a
+      size: 904
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_0_metrics.json
+      hash: md5
+      md5: 455abe29dd057a79e300725607bb9d18
+      size: 35
+  eval_noisy@-5:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_-5/preds_-5db.jsonl --out 
+      data/metrics/fr/noisy_-5_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_-5/preds_-5db.jsonl
+      hash: md5
+      md5: 85b503f53734ad03443f26d7f342c6f6
+      size: 829
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_-5_metrics.json
+      hash: md5
+      md5: c9e2ca2a1e48983e7c7c7cffb7d0a45f
+      size: 35
+  eval_noisy@-10:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_-10/preds_-10db.jsonl --out 
+      data/metrics/fr/noisy_-10_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_-10/preds_-10db.jsonl
+      hash: md5
+      md5: dbc374bf8598f8c381b4249be0f6583b
+      size: 676
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_-10_metrics.json
+      hash: md5
+      md5: 0761cea4b01a6417bfb92b070f0aabf0
+      size: 22
+  eval_noisy@-15:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_-15/preds_-15db.jsonl --out 
+      data/metrics/fr/noisy_-15_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_-15/preds_-15db.jsonl
+      hash: md5
+      md5: 5f9e3a37fa629a6c7ea00110a77c0d17
+      size: 661
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_-15_metrics.json
+      hash: md5
+      md5: 7b7a6a165e465b751516a6b6557ca6b8
+      size: 20
+  eval_noisy@-20:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_-20/preds_-20db.jsonl --out 
+      data/metrics/fr/noisy_-20_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_-20/preds_-20db.jsonl
+      hash: md5
+      md5: 0ccb137f54224607de1daac6f4d4cec9
+      size: 661
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_-20_metrics.json
+      hash: md5
+      md5: 7b7a6a165e465b751516a6b6557ca6b8
+      size: 20
+  eval_noisy@-25:
+    cmd: python src/evaluate.py --input 
+      data/manifests/fr/noisy_-25/preds_-25db.jsonl --out 
+      data/metrics/fr/noisy_-25_metrics.json
+    deps:
+    - path: data/manifests/fr/noisy_-25/preds_-25db.jsonl
+      hash: md5
+      md5: a4f3f516643023fe6eda31b27bfeae6b
+      size: 661
+    - path: src/evaluate.py
+      hash: md5
+      md5: 7ad7a7bfa6c2ec7e0c34f8c4aad69893
+      size: 1075
+    outs:
+    - path: data/metrics/fr/noisy_-25_metrics.json
+      hash: md5
+      md5: 7b7a6a165e465b751516a6b6557ca6b8
+      size: 20

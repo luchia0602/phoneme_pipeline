@@ -22,7 +22,7 @@ def main():
 
     plt.gca().invert_xaxis()
     plt.xlabel("Signal to noise ratio (lower=noisier)")
-    plt.ylabel("PER (lower=worse)")
+    plt.ylabel("PER (lower=better)")
     plt.title("Model robustness to noise across languages")
     plt.legend()
     plt.grid(True, linestyle=':', alpha=0.7)
